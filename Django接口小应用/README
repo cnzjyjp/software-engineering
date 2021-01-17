@@ -1,0 +1,64 @@
+## Django 接口小应用
+
+##### 部署文档
+
+四步部署(环境为Ubuntu16.04，python版本3.7):
+
+```
+pip install --user virtualenv
+#如果已安装virtualenv则跳过
+
+#进入目录ll_env/bin/
+. activate
+#激活
+#退出虚拟环境
+
+pip install Django
+#如果已安装Django则跳过
+
+pip install pyjwt
+#如果已安装pyjwt则跳过
+```
+
+在根目录(`manage.py`所在目录)下执行`python3 manage.py runserver`启动应用。
+
+##### 代码风格约定
+
+常量名全部大写；
+
+变量名、方法名、函数名首字母小写，其他单词首字母大写；
+
+类名首字母大写，其他单词首字母小写；
+
+缩进等编写风格采用PEP8自动编排(在pycharm2019.3.1中Ctrl + Alt + L得到)。
+
+##### 接口文档
+
+###### 注册
+
+访问http://localhost:8000/user/signup进行注册；
+
+按提示输入用户名密码参数；
+
+成功返回信息为`{"status": "signup successfully"}`，失败为`{"status": "signup unsuccessfully"}`。
+
+###### 登录
+
+访问http://localhost:8000/user/login进行登录；
+
+按提示输入用户名密码参数；
+
+成功会自动跳转显示该用户token。
+
+###### 查询
+
+访问http://localhost:8000/查询节日；
+
+按提示输入日期，格式为YYYY-MM-DD，例如：2020-05-09；
+
+目前仅支持元旦、国庆节、圣诞节的查询；
+
+未登录返回信息为`{"No login!"}`，查询成功（以元旦为例）返回信息为`{"Festival": "元旦"}`，查询失败(三个日期之外)为`{"Festival": ""}`。
+
+
+
